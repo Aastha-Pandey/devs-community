@@ -1,4 +1,3 @@
-
 import Main from "../../../components/main/Main";
 import useSWR from 'swr';
 import axios from 'axios';
@@ -6,14 +5,12 @@ import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism';
+
 import Link from 'next/link';
 import RightSideUserProfile from "../../../components/side/RightSideUserProfile";
 import Reactions from "../../../components/side/Reactions";
 import Header from "../../../components/headers/mainheader/Header";
-
-
-
 import Comment from "../../../components/main/Comment";
 
 const fetcher = url => axios.get(url).then(res => res.data)
@@ -21,7 +18,7 @@ const fetcher = url => axios.get(url).then(res => res.data)
 
 
 
-const Post = () => {
+const Slug = () => {
     const router = useRouter()
     const { username, slug } = router.query
     
@@ -84,7 +81,7 @@ const Post = () => {
     </ReactMarkdown>
     <Comment articleId = {data?.id} commentsCount = {data?.comments_count}/>
  </div>
- {/* { ReactHtmlParser(element) } */}
+ 
  
      </section></section>
     
@@ -97,7 +94,7 @@ const Post = () => {
    </>
 }
 
-export default Post;
+
 
 const Component = (props: {
    match:any,
@@ -117,7 +114,7 @@ const Component = (props: {
     );
   };
 
-Post.getLayout = function getLayout(page) {
+Slug.getLayout = function getLayout(page) {
  
     return (
      
@@ -125,3 +122,5 @@ Post.getLayout = function getLayout(page) {
          )
    
    }
+
+  export default Slug
