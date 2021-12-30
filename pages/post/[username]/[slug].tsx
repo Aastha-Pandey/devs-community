@@ -121,7 +121,7 @@ Post.getLayout = function getLayout(page) {
  
     return (
      
-        <Main> <Header/>{page}</Main>
+        <Main> <Header menuClicked={undefined} setMenuClicked={undefined}/>{page}</Main>
          )
    
    }
