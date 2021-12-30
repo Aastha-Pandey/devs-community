@@ -4,15 +4,16 @@ import LeftSideMenu from "../side/LeftSideMenu";
 import RightSide from "../side/RightSide";
 import Header from "../headers/mainheader/Header";
 import { useState } from "react";
+import PostsHeader from "../headers/postsheader/PostsHeader";
 
-
+// flex container bg-red-600 mx-auto justify-center  space-x-4
 const Layout1 = ({children}) => {
    const [menuClicked, setMenuClicked] = useState(false);
-    return <div className={menuClicked ? "fixed inset-0" : "relative"}>
+    return <div className={menuClicked ? "fixed inset-0" : "static  w-full "}>
      <Header menuClicked = {menuClicked} setMenuClicked = {setMenuClicked}/>
-   <section>
-        <main className={menuClicked ? "bg-black" : "bg-black mt-16 py-2"}>
-        <main className="flex container mx-auto justify-center  space-x-4">
+ 
+        <main className={menuClicked ? "bg-black" : "flex bg-black mt-16 py-2"}>
+        <main className="flex container  mx-auto justify-center  space-x-4">
             <section className= {menuClicked ?"" : "hidden md:flex lg:flex md:w-64 lg:w-64"}>
            {menuClicked ?  <div className={menuClicked ? "bg-opacity-25 bg-gray-100 w-full absolute inset-0" : ""}>
            <div className="bg-black w-72 fixed h-screen overflow-auto">
@@ -28,15 +29,15 @@ const Layout1 = ({children}) => {
             </div> : <LeftSideMenu />}
           
             </section>
-            <section className="w-full md:w-2/4 lg:w-2/4"> {children}</section>
-            <section className="flex flex-col space-y-3 py-4 md:flex lg:flex hidden md:w-64 lg:w-64">
+            <section className="bg-black w-auto md:w-2/4 lg:w-2/4"> {children}</section>
+            <section className="flex-col space-y-3 py-4 md:flex lg:flex hidden md:w-64 lg:w-64">
             <RightSide/>
             </section>
         </main>
            
         </main>
 
-    </section>
+   
     
     </div>
 }

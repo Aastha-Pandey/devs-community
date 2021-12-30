@@ -3,10 +3,10 @@
 
 const Main = ({children}) => {
 
-    return <>
+    return <div >
   
   {children}
-    </>
+    </div>
 }
 
 export default Main;
