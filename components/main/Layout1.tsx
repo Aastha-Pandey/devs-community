@@ -4,15 +4,13 @@ import LeftSideMenu from "../side/LeftSideMenu";
 import RightSide from "../side/RightSide";
 import Header from "../headers/mainheader/Header";
 import { useState } from "react";
-import PostsHeader from "../headers/postsheader/PostsHeader";
 
-// flex container bg-red-600 mx-auto justify-center  space-x-4
 const Layout1 = ({children}) => {
    const [menuClicked, setMenuClicked] = useState(false);
-    return <div className={menuClicked ? "fixed inset-0" : "static  w-full "}>
+    return <div className={menuClicked ? "fixed inset-0" : "static  "}>
      <Header menuClicked = {menuClicked} setMenuClicked = {setMenuClicked}/>
  
-        <main className={menuClicked ? "bg-black" : "flex bg-black mt-16 py-2"}>
+        <main className={menuClicked ? "bg-black" : "bg-black mt-14 md:mt-16 lg:mt-16 py-2"}>
         <main className="flex container  mx-auto justify-center  space-x-4">
             <section className= {menuClicked ?"" : "hidden md:flex lg:flex md:w-64 lg:w-64"}>
            {menuClicked ?  <div className={menuClicked ? "bg-opacity-25 bg-gray-100 w-full absolute inset-0" : ""}>

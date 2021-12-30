@@ -8,7 +8,7 @@ import Search from "./Search";
 const Header = ({menuClicked, setMenuClicked}) => {
     return <>
     <header className={menuClicked ? "relative inset-x-0 top-0 bg-gray-800 h-16 flex  px-16 justify-between" :
-     "fixed inset-x-0 top-0 bg-gray-800  h-16 flex px-16 justify-between"}>
+     "fixed inset-x-0 top-0 bg-gray-800  h-16 flex px-2 md:px-16 lg:px-16 justify-between"}>
     <span className="flex space-x-3 items-center">
     <svg 
     onClick={() => setMenuClicked(!menuClicked)}

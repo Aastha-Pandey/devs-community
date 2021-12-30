@@ -36,7 +36,7 @@ setDays(7);
          <a className="focus:ring-4 focus:ring-indigo-500 rounded-md">
          {i === 0 && <img className="object-contain rounded-t-md  w-full" src = {`${post.cover_image}`} alt = 'cover_image'></img>}
         <div className={i === 0 ? 'bg-gray-800 flex flex-col space-y-4 p-6 h-auto rounded-b-md  w-full' : 'bg-gray-800 flex flex-col space-y-4 p-6 h-auto rounded-md  w-full'}>
-           <header className="text-gray-100 flex space-x-3  items-center">
+           <header className="text-gray-100 flex pl-9 md:pl-0 lg:pl-0 space-x-3  items-center">
             <img className=" w-8 h-8 rounded-full" src = {`${post.user.profile_image}`} alt = {`${post.user.name}`}></img>
             <div className=" text-left "> <span className="font-medium text-sm hover:bg-gray-600 hover:bg-opacity-25 hover:text-opacity-100 p-1 rounded-md">{post.user.name}</span>
               <div className="text-gray-400 text-xs hover:text-gray-50 px-1">Dec 16 (5 days ago)</div>
