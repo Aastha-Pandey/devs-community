@@ -2,11 +2,13 @@
 
 
 
+import Link from "next/link";
 import Search from "./Search";
 
 
 const Header = ({menuClicked, setMenuClicked}) => {
     return <>
+    {/* <meta name="viewport" content="width=device-width, initial-scale=1.0"/> */}
     <header className={menuClicked ? "relative inset-x-0 top-0 bg-gray-800 h-16 flex  px-16 justify-between" :
      "fixed inset-x-0 top-0 bg-gray-800  h-16 flex px-2 md:px-16 lg:px-16 justify-between"}>
     <span className="flex space-x-3 items-center">
@@ -17,7 +19,9 @@ const Header = ({menuClicked, setMenuClicked}) => {
     fill='currentColor'
     d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
 </svg>
-    <button className="font-bold text-xl bg-gray-100 rounded-md px-1 py-2 tracking-tighter">DEVS</button>
+    <Link href = '/'>
+        <a  className="font-bold text-xl bg-gray-100 rounded-md px-1 py-2 tracking-tighter">DEVS</a>
+    </Link>
     <Search/>
     </span>
     <span className="flex space-x-3 items-center">
@@ -35,6 +39,7 @@ className="cursor-pointer w-10 h-10 px-2 py-1 rounded-md hover:bg-gray-700 text-
     <button className="bg-indigo-400 w-8 h-8 rounded-full"/>
     </span>
     </header>
+   
 </>
 }
 

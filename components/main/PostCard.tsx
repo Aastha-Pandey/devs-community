@@ -11,27 +11,27 @@ const fetcher = url => axios.get(url).then(res => res.data)
 
 const PostCard = () => {
   const router = useRouter()
-  const { sortby, duration } = router.query
+  const { sortby } = router.query
   const [days, setDays] = React.useState(Number);
   React.useEffect(() => {
-if(duration === 'week' || sortby === 'top') {
+if(sortby && sortby[1] === 'week' || sortby && sortby[0] === 'top') {
 setDays(7);
-}else if(duration === 'month') {
+}else if(sortby && sortby[1] === 'month') {
   setDays(30);
-}else if(duration === 'year') {
+}else if(sortby && sortby[1] === 'year') {
   setDays(365);
 }
-  },[duration, sortby])
+  },[sortby])
  
-  const { data } = useSWR((sortby || duration === 'week' || duration === 'month' || duration === 'year')? 
-    (sortby === 'top' || duration === 'week' || duration === 'month' || duration === 'year') ? `https://dev.to/api/articles?top=${days}` : `https://dev.to/api/articles/${sortby}`
+  const { data } = useSWR((sortby && sortby[0] && sortby[0] !== 'relevant' || sortby && sortby[1] === 'week' || sortby && sortby[1] === 'month' || sortby && sortby[1] === 'year')? 
+    (sortby && sortby[0] === 'top' || sortby && sortby[1] === 'week' || sortby && sortby[1] === 'month' || sortby && sortby[1] === 'year') ? `https://dev.to/api/articles?top=${days}` : `https://dev.to/api/articles/${sortby && sortby[0]}`
    : `https://dev.to/api/articles` , fetcher);
 
     return <>
     <PostsHeader/>
   <div className="flex flex-col space-y-2">
   {
-       data && data.map((post, i) => <Link href = {post.organization ? `/post/${post.organization.username}/${post.slug}` : `/post/${post.user.username}/${post.slug}`} key = {i} >
+       data && data.map((post, i) => <Link href = {post.organization ? `/${post.organization.username}/${post.slug}` : `/${post.user.username}/${post.slug}`} key = {i} >
         
          <a className="focus:ring-4 focus:ring-indigo-500 rounded-md">
          {i === 0 && <img className="object-contain rounded-t-md  w-full" src = {`${post.cover_image}`} alt = 'cover_image'></img>}

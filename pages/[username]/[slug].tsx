@@ -1,4 +1,4 @@
-import Main from "../../../components/main/Main";
+import Main from "../../components/main/Main";
 import useSWR from 'swr';
 import axios from 'axios';
 import { useRouter } from 'next/router';
@@ -8,17 +8,17 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import Link from 'next/link';
-import RightSideUserProfile from "../../../components/side/RightSideUserProfile";
-import Reactions from "../../../components/side/Reactions";
-import Header from "../../../components/headers/mainheader/Header";
-import Comment from "../../../components/main/Comment";
+import RightSideUserProfile from "../../components/side/RightSideUserProfile";
+import Reactions from "../../components/side/Reactions";
+import Header from "../../components/headers/mainheader/Header";
+import Comment from "../../components/main/Comment";
 
 const fetcher = url => axios.get(url).then(res => res.data)
 
 
 
 
-const Slug = () => {
+const Post = () => {
     const router = useRouter()
     const { username, slug } = router.query
     
@@ -114,7 +114,7 @@ const Component = (props: {
     );
   };
 
-Slug.getLayout = function getLayout(page) {
+Post.getLayout = function getLayout(page) {
  
     return (
      
@@ -123,4 +123,4 @@ Slug.getLayout = function getLayout(page) {
    
    }
 
-  export default Slug
+  export default Post

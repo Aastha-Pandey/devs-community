@@ -10,7 +10,7 @@ const Layout1 = ({children}) => {
     return <div className={menuClicked ? "fixed inset-0" : "static  "}>
      <Header menuClicked = {menuClicked} setMenuClicked = {setMenuClicked}/>
  
-        <main className={menuClicked ? "bg-black" : "bg-black mt-14 md:mt-16 lg:mt-16 py-2"}>
+        <main className={menuClicked ? "bg-black" : "bg-black w-full mt-14 md:mt-16 lg:mt-16 py-2"}>
         <main className="flex container  mx-auto justify-center  space-x-4">
             <section className= {menuClicked ?"" : "hidden md:flex lg:flex md:w-64 lg:w-64"}>
            {menuClicked ?  <div className={menuClicked ? "bg-opacity-25 bg-gray-100 w-full absolute inset-0" : ""}>
@@ -27,7 +27,7 @@ const Layout1 = ({children}) => {
             </div> : <LeftSideMenu />}
           
             </section>
-            <section className="bg-black w-auto md:w-2/4 lg:w-2/4"> {children}</section>
+            <section className=" w-auto md:w-2/4 lg:w-2/4"> {children}</section>
             <section className="flex-col space-y-3 py-4 md:flex lg:flex hidden md:w-64 lg:w-64">
             <RightSide/>
             </section>

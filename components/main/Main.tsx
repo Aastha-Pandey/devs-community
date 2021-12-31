@@ -3,7 +3,7 @@
 
 const Main = ({children}) => {
 
-    return <div >
+    return <div>
   
   {children}
     </div>
