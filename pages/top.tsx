@@ -5,7 +5,7 @@ import PostCard from '../components/main/PostCard';
 const Top = () => {
   return (
     <>
-      <PostCard />
+      <PostCard tags={undefined} />
     </>
   );
 };

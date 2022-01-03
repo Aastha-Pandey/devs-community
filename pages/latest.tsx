@@ -5,7 +5,7 @@ import PostCard from '../components/main/PostCard';
 const Latest = () => {
   return (
     <>
-      <PostCard />
+      <PostCard tags={undefined} />
     </>
   );
 };

@@ -5,7 +5,7 @@ import PostCard from '../../components/main/PostCard';
 const Duration = () => {
   return (
     <>
-      <PostCard />
+      <PostCard tags={undefined} />
     </>
   );
 };
