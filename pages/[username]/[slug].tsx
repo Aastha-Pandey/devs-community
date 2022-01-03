@@ -1,6 +1,6 @@
-import Header from '../../../components/headers/mainheader/Header';
-import Main from '../../../components/main/Main';
-import Post from '../../../components/main/Post';
+import Header from '../../components/headers/mainheader/Header';
+import Main from '../../components/main/Main';
+import Post from '../../components/main/Post';
 
 const Slug = () => {
   return (

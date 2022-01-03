@@ -1,8 +1,8 @@
+import Layout1 from '../components/main/Layout1';
 import Main from '../components/main/Main';
 import PostCard from '../components/main/PostCard';
-import Layout1 from '../components/main/Layout1';
 
-const Sortby = () => {
+const Latest = () => {
   return (
     <>
       <PostCard />
@@ -10,9 +10,9 @@ const Sortby = () => {
   );
 };
 
-export default Sortby;
+export default Latest;
 
-Sortby.getLayout = function getLayout(page) {
+Latest.getLayout = function getLayout(page) {
   return (
     <Main>
       <Layout1>{page}</Layout1>

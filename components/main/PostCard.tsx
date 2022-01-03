@@ -5,37 +5,36 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { formatDistance } from 'date-fns';
-import Layout1 from './Layout1';
-import Main from './Main';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
-const PostCard = () => {
+const PostCard = ({ tags }) => {
+  const user = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('current_user'));
+  console.log(tags);
   const router = useRouter();
-  const { sortby } = router.query;
+
   const [days, setDays] = React.useState(Number);
   React.useEffect(() => {
-    if ((sortby && sortby[1] === 'week') || (sortby && sortby[0] === 'top')) {
+    if (router.asPath === '/top/week' || router.asPath === '/top') {
       setDays(7);
-    } else if (sortby && sortby[1] === 'month') {
+    } else if (router.asPath === '/top/month') {
       setDays(30);
-    } else if (sortby && sortby[1] === 'year') {
+    } else if (router.asPath === '/top/year') {
       setDays(365);
     }
-  }, [sortby]);
+  }, [router.asPath]);
 
   const { data } = useSWR(
-    (sortby && sortby[0] && sortby[0] !== 'relevant') ||
-      (sortby && sortby[1] === 'week') ||
-      (sortby && sortby[1] === 'month') ||
-      (sortby && sortby[1] === 'year')
-      ? (sortby && sortby[0] === 'top') ||
-        (sortby && sortby[1] === 'week') ||
-        (sortby && sortby[1] === 'month') ||
-        (sortby && sortby[1] === 'year')
-        ? `https://dev.to/api/articles?top=${days}`
-        : `https://dev.to/api/articles/${sortby && sortby[0]}`
-      : `https://dev.to/api/articles`,
+    router.asPath === '/top' ||
+      router.asPath === '/top/week' ||
+      router.asPath === '/top/month' ||
+      router.asPath === '/top/year'
+      ? `https://dev.to/api/articles?top=${days}`
+      : user && (router.asPath === '/relevant' || router.asPath === '/')
+      ? `https://dev.to/api/articles?tags=${tags.map((tag) => tag.name)}`
+      : router.asPath === '/relevant' || router.asPath === '/'
+      ? `https://dev.to/api/articles`
+      : `https://dev.to/api/articles${router.asPath}`,
     fetcher
   );
 
@@ -48,8 +47,8 @@ const PostCard = () => {
             <Link
               href={
                 post.organization
-                  ? `/post/${post.organization.username}/${post.slug}`
-                  : `/post/${post.user.username}/${post.slug}`
+                  ? `/${post.organization.username}/${post.slug}`
+                  : `/${post.user.username}/${post.slug}`
               }
               key={i}
             >
@@ -160,11 +159,3 @@ const PostCard = () => {
 };
 
 export default PostCard;
-
-// PostCard.getLayout = function getLayout(page) {
-//   return (
-//     <Main>
-//       <Layout1>{page}</Layout1>
-//     </Main>
-//   );
-// };
