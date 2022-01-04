@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
+import dark from 'react-syntax-highlighter/dist/cjs/styles/prism/dark';
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light';
+import remarkGfm from 'remark-gfm';
 import Comment from './Comment';
-import Markdown from './Markdown';
 
 const FullArticle = ({
   coverImage,
@@ -50,7 +53,36 @@ const FullArticle = ({
                   </Link>
                 ))}
             </div>
-            <Markdown bodyHtml={''} markdown={bodyMarkdown} />
+            <ReactMarkdown
+              className='flex flex-col space-y-4'
+              remarkPlugins={[remarkGfm]}
+              components={{
+                ul: ({ node, ...props }) => <ul className='list-disc  text-gray-100' {...props} />,
+
+                h2: ({ node, ...props }) => {
+                  if (props.children.length !== 1) {
+                    return <></>;
+                  }
+
+                  return <h2 className='text-xl font-bold text-gray-100' {...props} />;
+                },
+                code({ node, inline, className, children, ...props }) {
+                  const match = /language-(\w+)/.exec(className || '');
+                  return !inline && match ? (
+                    <Component match={match}>{children}</Component>
+                  ) : (
+                    <code
+                      className='bg-gray-800 bg-opacity-25 text-indigo-500 underline'
+                      {...props}
+                    >
+                      {children}
+                    </code>
+                  );
+                },
+              }}
+            >
+              {bodyMarkdown}
+            </ReactMarkdown>
 
             <Comment articleId={articleId} commentsCount={commentsCount} />
           </div>
@@ -61,3 +93,19 @@ const FullArticle = ({
 };
 
 export default FullArticle;
+const Component = (props: { match: any; children: any }) => {
+  return (
+    <SyntaxHighlighter
+      customStyle={{
+        backgroundColor: 'black',
+        padding: '1rem',
+        borderRadius: '12px',
+        borderColor: 'black',
+      }}
+      language={props.match[1]}
+      style={dark}
+    >
+      {String(props.children).replace(/\n$/, '')}
+    </SyntaxHighlighter>
+  );
+};

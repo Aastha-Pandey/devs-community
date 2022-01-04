@@ -36,7 +36,7 @@ const Markdown = ({ bodyHtml, markdown }) => {
           },
         }}
       >
-        {markdown ? markdown : turndownService.turndown(decode(bodyHtml && bodyHtml.body_html))}
+        {turndownService.turndown(decode(bodyHtml && bodyHtml.body_html))}
       </ReactMarkdown>
     </>
   );

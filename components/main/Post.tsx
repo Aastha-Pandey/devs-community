@@ -1,19 +1,16 @@
 import useSWR from 'swr';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-
 import RightSideUserProfile from './../side/RightSideUserProfile';
 import Reactions from './../side/Reactions';
-
 import Head from 'next/head';
-
 import FullArticle from './FullArticle';
+
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const Post = () => {
   const router = useRouter();
   const { username, slug } = router.query;
-
   const { data } = useSWR(`https://dev.to/api/articles/${username}/${slug}`, fetcher);
 
   return (

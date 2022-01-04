@@ -3,7 +3,7 @@ import useSWR from 'swr';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { formatDistance } from 'date-fns';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
@@ -13,8 +13,8 @@ const PostCard = ({ tags }) => {
 
   const router = useRouter();
 
-  const [days, setDays] = React.useState(Number);
-  React.useEffect(() => {
+  const [days, setDays] = useState(Number);
+  useEffect(() => {
     if (router.asPath === '/top/week' || router.asPath === '/top') {
       setDays(7);
     } else if (router.asPath === '/top/month') {
