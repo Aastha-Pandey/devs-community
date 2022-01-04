@@ -10,7 +10,7 @@ const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const PostCard = ({ tags }) => {
   const user = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('current_user'));
-  console.log(tags);
+
   const router = useRouter();
 
   const [days, setDays] = React.useState(Number);

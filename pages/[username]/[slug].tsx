@@ -15,7 +15,6 @@ export default Slug;
 Slug.getLayout = function getLayout(page) {
   return (
     <Main>
-      {' '}
       <Header menuClicked={undefined} setMenuClicked={undefined} />
       {page}
     </Main>

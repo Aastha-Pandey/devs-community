@@ -11,7 +11,6 @@ const PostsHeader = () => {
     <>
       <header className='h-16 bg-black flex items-center pl-14 md:px-2 lg:px-2 justify-between '>
         <span>
-          {' '}
           {tabs.map((tab, i) => (
             <Link key={i} href={`/${tab}`}>
               <a

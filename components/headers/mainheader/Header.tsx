@@ -94,5 +94,3 @@ const Header = ({ menuClicked, setMenuClicked }) => {
 };
 
 export default Header;
-
-// mi2mfnSL8rnVwEDrnFZsDjeH

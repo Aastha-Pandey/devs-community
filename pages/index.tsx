@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Main from '../components/main/Main';
-import Layout1 from '../components/main/Layout1';
+import HomePageLayout from '../components/main/HomePageLayout';
 import Relevant from './relevant';
 
 export default function Index() {
@@ -19,7 +19,7 @@ export default function Index() {
 Index.getLayout = function getLayout(page) {
   return (
     <Main>
-      <Layout1>{page}</Layout1>
+      <HomePageLayout>{page}</HomePageLayout>
     </Main>
   );
 };
