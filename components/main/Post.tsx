@@ -6,7 +6,7 @@ import Reactions from './../side/Reactions';
 import Head from 'next/head';
 import FullArticle from './FullArticle';
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+const fetcher = (url: '') => axios.get(url).then((res) => res.data);
 
 const Post = () => {
   const router = useRouter();

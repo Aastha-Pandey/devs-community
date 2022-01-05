@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import axios from 'axios';
 import CommentCard from './CommentCard';
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+const fetcher = (url: '') => axios.get(url).then((res) => res.data);
 
 const Comment = ({ articleId, commentsCount }) => {
   const { data } = useSWR(`https://dev.to/api/comments?a_id=${articleId}`, fetcher);
@@ -15,7 +15,7 @@ const Comment = ({ articleId, commentsCount }) => {
           Subscribe
         </button>
       </header>
-      {data && data.map((comment, i) => <CommentCard comment={comment} key={i} />)}
+      {data && data.map((comment: {}, i: number) => <CommentCard comment={comment} key={i} />)}
     </>
   );
 };

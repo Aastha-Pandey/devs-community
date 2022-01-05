@@ -42,7 +42,7 @@ const FullArticle = ({
             <div className='w-auto'>
               {' '}
               {tags &&
-                tags.map((tag, i) => (
+                tags.map((tag: '', i: number) => (
                   <Link key={i} href='/'>
                     <a className='border border-gray-800  hover:border-gray-600 px-2 py-1 text-gray-400 rounded-md text-sm'>
                       #{tag}

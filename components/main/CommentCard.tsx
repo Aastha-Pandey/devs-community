@@ -19,7 +19,7 @@ const CommentCard = ({ comment }) => {
           <Markdown bodyMarkdown={undefined} bodyHtml={comment} />
         </div>
       </div>
-      {comment.children.map((k, i) => (
+      {comment.children.map((k: {}, i: number) => (
         <CommentCard comment={k} key={i} />
       ))}
     </>

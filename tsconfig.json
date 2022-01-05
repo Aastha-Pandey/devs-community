@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/api/hello.js", "pages/index.tsx", "pages/login.tsx",  ],
+, "pages/api/hello.js", "pages/index.tsx", "pages/login.tsx", "components/main/PostCard.test.js",  ],
   "exclude": [
     "node_modules"
   ]
