@@ -1,8 +1,4 @@
 import Link from 'next/link';
-import ReactMarkdown from 'react-markdown';
-import dark from 'react-syntax-highlighter/dist/cjs/styles/prism/dark';
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light';
-import remarkGfm from 'remark-gfm';
 import Comment from './Comment';
 import Markdown from './Markdown';
 

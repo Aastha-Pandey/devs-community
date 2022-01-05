@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { formatDistance } from 'date-fns';
+import { commentIcon, heartIcon } from '../../svg';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -90,11 +91,9 @@ const PostCard = ({ tags }) => {
                   <div className='pl-10 w-full'>
                     <div className='text-left flex-col space-y-2 justify-start'>
                       <div className='text-gray-100  hover:text-indigo-500 text-2xl font-bold'>
-                        {' '}
                         {post.title}
                       </div>
                       <div className='flex space-x-2'>
-                        {' '}
                         {post.tag_list.map((tag, i) => (
                           <Link key={i} href='/'>
                             <a className='border border-gray-800  hover:border-gray-600 px-2 py-1 text-gray-400 rounded-md text-sm'>
@@ -106,38 +105,12 @@ const PostCard = ({ tags }) => {
                     </div>
                     <span className='flex justify-between items-center  '>
                       <span className='flex space-x-2 pt-2'>
-                        <span className='flex text-gray-300 space-x-2 text-sm items-center hover:bg-gray-600 hover:bg-opacity-25 hover:text-opacity-100 rounded-md px-2 py-1'>
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            width='20'
-                            height='20'
-                            viewBox='0 0 24 24'
-                            aria-hidden='true'
-                            className='crayons-icon'
-                          >
-                            <path
-                              fill='currentColor'
-                              d='M21.179 12.794l.013.014L12 22l-9.192-9.192.013-.014A6.5 6.5 0 0112 3.64a6.5 6.5 0 019.179 9.154zM4.575 5.383a4.5 4.5 0 000 6.364L12 19.172l7.425-7.425a4.5 4.5 0 10-6.364-6.364L8.818 9.626 7.404 8.21l3.162-3.162a4.5 4.5 0 00-5.99.334l-.001.001z'
-                            ></path>
-                          </svg>
+                        <span className='flex space-x-2 text-gray-300 text-sm items-center hover:bg-gray-600 hover:bg-opacity-25 hover:text-opacity-100 rounded-md px-2 py-1'>
+                          {heartIcon(20, 20)}
                           <span>{post.positive_reactions_count} Reactions</span>
                         </span>
                         <span className='flex items-center text-gray-300 space-x-2 text-sm  hover:bg-gray-600 hover:bg-opacity-25 hover:text-opacity-100 rounded-md px-2 py-1'>
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            width='24'
-                            height='24'
-                            viewBox='0 0 24 24'
-                            role='img'
-                            aria-labelledby='a6hsif7p4m4f2z8m579jl0wxbgy8ojph'
-                            className=' crayons-icon reaction-icon not-reacted'
-                          >
-                            <title id='a6hsif7p4m4f2z8m579jl0wxbgy8ojph'>Comment button</title>
-                            <path
-                              fill='currentColor'
-                              d='M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z'
-                            ></path>
-                          </svg>
+                          {commentIcon}
                           <span>{post.comments_count} Comments</span>
                         </span>
                       </span>
