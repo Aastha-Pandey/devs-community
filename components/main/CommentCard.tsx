@@ -16,7 +16,7 @@ const CommentCard = ({ comment }) => {
             <span>...</span>
           </header>
 
-          <Markdown bodyHtml={comment} markdown={undefined} />
+          <Markdown bodyMarkdown={undefined} bodyHtml={comment} />
         </div>
       </div>
       {comment.children.map((k, i) => (

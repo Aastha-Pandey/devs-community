@@ -8,7 +8,7 @@ const TurndownService = require('turndown').default;
 
 const turndownService = new TurndownService();
 
-const Markdown = ({ bodyHtml, markdown }) => {
+const Markdown = ({ bodyHtml, bodyMarkdown }) => {
   return (
     <>
       <ReactMarkdown
@@ -36,7 +36,7 @@ const Markdown = ({ bodyHtml, markdown }) => {
           },
         }}
       >
-        {turndownService.turndown(decode(bodyHtml && bodyHtml.body_html))}
+        {bodyMarkdown ? bodyMarkdown : turndownService.turndown(decode(bodyHtml.body_html))}
       </ReactMarkdown>
     </>
   );
