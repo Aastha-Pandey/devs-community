@@ -7,7 +7,10 @@ const HomePageLayout = ({ children }) => {
   const [menuClicked, setMenuClicked] = useState(false);
   return (
     <div className={menuClicked ? 'fixed inset-0' : 'static  '}>
-      <Header menuClicked={menuClicked} setMenuClicked={setMenuClicked} />
+      <Header
+        menuClicked={menuClicked}
+        setMenuClicked={(value: boolean) => setMenuClicked(value)}
+      />
 
       <main className={menuClicked ? 'bg-black' : 'bg-black w-full mt-14 md:mt-16 lg:mt-16 py-2'}>
         <main className='flex container  mx-auto justify-center  space-x-4'>

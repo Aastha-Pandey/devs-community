@@ -2,7 +2,12 @@ import Link from 'next/link';
 import { hamburgerMenu, notificationIcon, searchIcon } from '../../../svg';
 import Search from './Search';
 
-const Header = ({ menuClicked, setMenuClicked }) => {
+type HeaderProps = {
+  menuClicked: boolean;
+  setMenuClicked: Function;
+};
+
+const Header = ({ menuClicked, setMenuClicked }: HeaderProps) => {
   const user = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('current_user'));
 
   return (

@@ -63,7 +63,7 @@ const PostCard = ({ tags }: PostCardProps) => {
       : `https://dev.to/api/articles${router.asPath}`,
     fetcher
   );
-
+  console.log(data);
   return (
     <>
       <PostsHeader />
